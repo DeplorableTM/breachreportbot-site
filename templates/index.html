@@ -10,7 +10,10 @@
       server — automatically, every match.
     </p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="{{ invite_url }}">Add to Discord</a>
+      <div class="coming-soon-wrap">
+        <a class="btn btn-primary" href="{{ invite_url }}" tabindex="-1" aria-disabled="true">Add to Discord</a>
+        <span class="coming-soon-badge">Coming Soon</span>
+      </div>
       <a class="btn btn-ghost" href="#features">See what it does</a>
     </div>
   </div>
@@ -51,28 +54,31 @@
 <section class="pricing" id="pricing">
   <div class="wrap">
     <h2>Pricing</h2>
-    <p class="pricing-note">Full pricing is being finalized — check back soon, or add the bot now to get started.</p>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Starter</h3>
-        <p class="seat-count">1 seat</p>
-        <p class="price">TBD</p>
+    <p class="pricing-note">Full pricing is being finalized — check back soon.</p>
+    <div class="coming-soon-wrap coming-soon-wrap--block">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <p class="seat-count">1 seat</p>
+          <p class="price">TBD</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Squad</h3>
+          <p class="seat-count">5 seats</p>
+          <p class="price">TBD</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Team</h3>
+          <p class="seat-count">19 seats</p>
+          <p class="price">TBD</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Unlimited</h3>
+          <p class="seat-count">No seat limit</p>
+          <p class="price">TBD</p>
+        </div>
       </div>
-      <div class="pricing-card">
-        <h3>Squad</h3>
-        <p class="seat-count">5 seats</p>
-        <p class="price">TBD</p>
-      </div>
-      <div class="pricing-card">
-        <h3>Team</h3>
-        <p class="seat-count">19 seats</p>
-        <p class="price">TBD</p>
-      </div>
-      <div class="pricing-card">
-        <h3>Unlimited</h3>
-        <p class="seat-count">No seat limit</p>
-        <p class="price">TBD</p>
-      </div>
+      <span class="coming-soon-badge coming-soon-badge--center">Coming Soon</span>
     </div>
   </div>
 </section>
@@ -80,7 +86,10 @@
 <section class="cta-band">
   <div class="wrap">
     <h2>Ready to see your squad on the board?</h2>
-    <a class="btn btn-primary" href="{{ invite_url }}">Add BreachReportBot to Discord</a>
+    <div class="coming-soon-wrap">
+      <a class="btn btn-primary" href="{{ invite_url }}" tabindex="-1" aria-disabled="true">Add BreachReportBot to Discord</a>
+      <span class="coming-soon-badge">Coming Soon</span>
+    </div>
   </div>
 </section>
 {% endblock %}
