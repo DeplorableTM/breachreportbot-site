@@ -8,7 +8,7 @@ app = Flask(__name__)
 DISCORD_CLIENT_ID = os.environ.get("DISCORD_CLIENT_ID", "")
 INVITE_URL = (
     f"https://discord.com/oauth2/authorize?client_id={DISCORD_CLIENT_ID}"
-    f"&permissions=277025441856&scope=bot%20applications.commands"
+    f"&permissions=347136&integration_type=0&scope=bot+applications.commands"
     if DISCORD_CLIENT_ID else "#"
 )
 
