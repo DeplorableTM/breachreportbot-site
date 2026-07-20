@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Privacy Policy — BreachReportBot{% endblock %}
+{% block content %}
+<div class="wrap legal">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Draft — not yet finalized or legally reviewed.</p>
+  <div class="draft-notice">
+    This page is a placeholder. Final Privacy Policy text needs review before this bot
+    processes real payments or personal data at scale.
+  </div>
+
+  <h2>1. What We Collect</h2>
+  <ul>
+    <li>Your Discord user ID and display name.</li>
+    <li>Your linked Ubisoft username (public, used to fetch your Rainbow Six Siege stats).</li>
+    <li>Match statistics (kills, deaths, wins, losses, and related in-game stats).</li>
+    <li>Payment and billing information — handled entirely by our payment processor; we
+    do not directly store card details.</li>
+  </ul>
+
+  <h2>2. How We Use It</h2>
+  <p>Solely to provide the tracking/leaderboard service: fetching your public game
+  stats, computing session/monthly/season/lifetime totals, and posting them to the
+  Discord server(s) you're tracked in.</p>
+
+  <h2>3. Data Sharing</h2>
+  <p>We do not sell player data. Stats are fetched via a third-party stats API
+  ([placeholder — name provider]) and posted to Discord. Payment processing is handled
+  by our payment processor.</p>
+
+  <h2>4. Data Retention and Deletion</h2>
+  <p>See the Terms of Service for how long data is retained after a seat is unassigned
+  or cancelled. [Placeholder — add a data-deletion request process/contact.]</p>
+
+  <h2>5. Contact</h2>
+  <p>[Placeholder — support/contact email.]</p>
+</div>
+{% endblock %}

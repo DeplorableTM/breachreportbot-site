@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">RAINBOW SIX SIEGE · DISCORD BOT</p>
+    <h1>Every match, tracked.<br>Every server, competing.</h1>
+    <p class="lede">
+      BreachReportBot watches your squad's Ranked, Quick Match, and Unranked play and
+      posts live leaderboards, records, and session recaps straight into your Discord
+      server — automatically, every match.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="{{ invite_url }}">Add to Discord</a>
+      <a class="btn btn-ghost" href="#features">See what it does</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <h2>Built for squads who keep score</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Multi-mode tracking</h3>
+        <p>Ranked, Quick Match, and Unranked tracked independently — plus a Combined view that rolls them all together.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Live leaderboards</h3>
+        <p>Nightly, monthly, season, and all-time lifetime leaderboards post automatically as your server plays.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Records that matter</h3>
+        <p>Personal bests and all-time server records, broken and announced the moment they happen.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Custom scoring</h3>
+        <p>Tune point values for kills, deaths, headshots, clutches, aces, and more to match how your server plays.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Session recaps</h3>
+        <p>Every session ends with a full summary — who played, what they did, and how it stacked up.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Built to scale</h3>
+        <p>From a five-person squad to a full community server — seats scale with however many players you're tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <h2>Pricing</h2>
+    <p class="pricing-note">Full pricing is being finalized — check back soon, or add the bot now to get started.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <p class="seat-count">1 seat</p>
+        <p class="price">TBD</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Squad</h3>
+        <p class="seat-count">5 seats</p>
+        <p class="price">TBD</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Team</h3>
+        <p class="seat-count">19 seats</p>
+        <p class="price">TBD</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Unlimited</h3>
+        <p class="seat-count">No seat limit</p>
+        <p class="price">TBD</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to see your squad on the board?</h2>
+    <a class="btn btn-primary" href="{{ invite_url }}">Add BreachReportBot to Discord</a>
+  </div>
+</section>
+{% endblock %}
