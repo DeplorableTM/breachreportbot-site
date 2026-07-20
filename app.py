@@ -1,7 +1,15 @@
 import os
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request, redirect
 
 app = Flask(__name__)
+
+
+@app.before_request
+def enforce_https():
+    # Railway terminates TLS at its edge and forwards plain HTTP internally,
+    # setting X-Forwarded-Proto to the scheme the visitor actually used.
+    if request.headers.get("X-Forwarded-Proto", "https") == "http":
+        return redirect(request.url.replace("http://", "https://", 1), code=301)
 
 # Set once the Discord Application/Client ID is known (Developer Portal -> General Information).
 # Falls back to a placeholder link that just points at the docs page until it's configured.
