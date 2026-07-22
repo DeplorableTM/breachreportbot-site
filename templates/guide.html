@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}How It Works — BreachReportBot{% endblock %}
+{% block content %}
+<div class="wrap legal">
+  <h1>How It Works</h1>
+  <p class="updated">A quick guide to getting set up and using BreachReportBot.</p>
+
+  <h2>1. Add the bot to your server</h2>
+  <p>An admin invites BreachReportBot and picks a channel for it to post in. That's the
+  only setup step required for the server itself.</p>
+  <ul>
+    <li><a href="{{ invite_url }}">Add BreachReportBot to Discord</a></li>
+    <li><code>/setchannel</code> — pick the channel where leaderboards, records, and
+    session recaps get posted (admin only)</li>
+  </ul>
+
+  <h2>2. Link your Ubisoft account</h2>
+  <p>Each player links their own Ubisoft username to their Discord account. This is
+  self-serve — an admin can't link an account on someone else's behalf. Linking an
+  account requires an active subscription — either your own personal subscription or a
+  seat assigned to you from your server's subscription bundle. If you don't have one yet,
+  <code>/addplayer</code> will point you to a checkout link instead of linking the account.</p>
+  <ul>
+    <li><code>/addplayer</code> — link your Ubisoft username (requires an active subscription)</li>
+    <li><code>/myplayer</code> — see which accounts you currently have linked</li>
+    <li><code>/removeplayer</code> — unlink an account</li>
+  </ul>
+  <p>Once linked, the bot automatically polls for new matches and updates your stats —
+  no further action needed.</p>
+
+  <h2>3. Check your stats</h2>
+  <ul>
+    <li><code>/6stats</code> — your current ranked stats (or look up another player)</li>
+    <li><code>/sessionstats</code> — stats for the current tracking session</li>
+    <li><code>/lifetimestats</code> — your all-time stats</li>
+    <li><code>/operatorstats</code> — your top operators</li>
+    <li><code>/seasonstats</code> — your RP progress this season</li>
+  </ul>
+
+  <h2>4. Leaderboards &amp; records</h2>
+  <p>These post automatically as your server plays, or you can pull them up any time.
+  Leave the mode blank to see every mode your server has enabled at once.</p>
+  <ul>
+    <li><code>/leaderboard</code> — tonight's leaderboard</li>
+    <li><code>/monthlyleader</code>, <code>/seasonleader</code>, <code>/lifetimeleaderboard</code></li>
+    <li><code>/monthlypersonalrecords</code>, <code>/seasonpersonalrecords</code> — your own personal bests</li>
+    <li><code>/monthlyalltimerecords</code>, <code>/seasonalltimerecords</code> — server-wide records</li>
+  </ul>
+
+  <h2>5. Customize how your server tracks stats (admin only)</h2>
+  <ul>
+    <li><code>/setmodes</code> — turn Ranked, Quick Match, and Unranked tracking on or off</li>
+    <li><code>/setpoints</code> — adjust how much each stat is worth for leaderboard scoring</li>
+    <li><code>/settimezone</code> — set your server's timezone for daily rollovers</li>
+    <li><code>/scoring</code> — see the current point values</li>
+  </ul>
+
+  <h2>Licenses &amp; seats</h2>
+  <p>Every linked Ubisoft account uses a license seat. Seats can be purchased as a
+  personal subscription (covers you across every server you're in) or as a server bundle
+  (an admin buys a block of seats and assigns them to members).</p>
+  <ul>
+    <li><code>/subscribe</code> — get a checkout link to purchase a license, or use the
+    Store button the bot shows you when you try to link an account without an available
+    seat</li>
+    <li><code>/mylicenses</code> — see every seat or grant you've purchased</li>
+    <li><code>/assignseat</code>, <code>/unassignseat</code> — admins assign purchased
+    server seats to members</li>
+    <li><code>/listseats</code> — admins see every seat currently assigned in this server</li>
+  </ul>
+
+  <h2>Need the full list?</h2>
+  <p>Run <code>/help</code> in Discord at any time to see every command available to you.</p>
+</div>
+{% endblock %}

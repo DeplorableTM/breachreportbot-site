@@ -28,6 +28,11 @@ def index():
     return render_template("index.html", invite_url=INVITE_URL)
 
 
+@app.route("/guide")
+def guide():
+    return render_template("guide.html", invite_url=INVITE_URL)
+
+
 @app.route("/<page>")
 def legal_page(page):
     if page not in PAGES:
