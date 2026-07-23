@@ -90,6 +90,7 @@ nav a:hover { color: var(--text); }
   margin-bottom: 32px;
 }
 .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.platform-note { color: var(--text-dim); font-size: 0.82rem; margin-top: 16px; }
 
 /* Coming Soon overlay -- disables a control visually/functionally while keeping
    its underlying href/logic completely intact for easy re-enabling later. */
