@@ -52,31 +52,37 @@
 <section class="pricing" id="pricing">
   <div class="wrap">
     <h2>Pricing</h2>
-    <p class="pricing-note">Full pricing is being finalized — check back soon.</p>
-    <div class="coming-soon-wrap coming-soon-wrap--block">
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Starter</h3>
-          <p class="seat-count">1 seat</p>
-          <p class="price">TBD</p>
-        </div>
-        <div class="pricing-card">
-          <h3>Squad</h3>
-          <p class="seat-count">5 seats</p>
-          <p class="price">TBD</p>
-        </div>
-        <div class="pricing-card">
-          <h3>Team</h3>
-          <p class="seat-count">19 seats</p>
-          <p class="price">TBD</p>
-        </div>
-        <div class="pricing-card">
-          <h3>Unlimited</h3>
-          <p class="seat-count">No seat limit</p>
-          <p class="price">TBD</p>
-        </div>
+    <p class="pricing-note">Personal seats are live — server bundles are coming soon.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <p class="seat-count">1 seat, any server</p>
+        {% if buy_enabled %}
+        <p class="price">{{ user_1_price }}</p>
+        <a class="btn btn-primary" href="/buy">Get Started</a>
+        {% else %}
+        <p class="price">{{ user_1_price }}</p>
+        <p class="price-note">Purchases open soon</p>
+        {% endif %}
       </div>
-      <span class="coming-soon-badge coming-soon-badge--center">Coming Soon</span>
+      <div class="pricing-card pricing-card--soon">
+        <span class="pricing-card-badge">Soon</span>
+        <h3>Squad</h3>
+        <p class="seat-count">5 seats</p>
+        <p class="price">TBD</p>
+      </div>
+      <div class="pricing-card pricing-card--soon">
+        <span class="pricing-card-badge">Soon</span>
+        <h3>Team</h3>
+        <p class="seat-count">19 seats</p>
+        <p class="price">TBD</p>
+      </div>
+      <div class="pricing-card pricing-card--soon">
+        <span class="pricing-card-badge">Soon</span>
+        <h3>Unlimited</h3>
+        <p class="seat-count">No seat limit</p>
+        <p class="price">TBD</p>
+      </div>
     </div>
   </div>
 </section>
