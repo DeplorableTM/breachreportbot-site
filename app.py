@@ -62,7 +62,11 @@ DISCORD_OAUTH_REDIRECT_URI = os.environ.get(
 # Must match SEAT_BUNDLES["user"]["1"] in BreachReport.py -- keep in sync by hand if
 # that ever changes, there's no shared source of truth between the two repos.
 USER_1_VARIANT_ID  = 1954632
-USER_1_PRICE_LABEL = "$4.99/month (7-day free trial)"
+# The 7-day free trial is a Lemon Squeezy checkout feature -- Discord's Store has no
+# equivalent, so drop the trial mention from the label while WEBSITE_PURCHASE_ENABLED
+# is False and the button points at Discord instead. Comes back automatically once the
+# flag flips back to True, no separate change needed then.
+USER_1_PRICE_LABEL = "$4.99/month" + (" (7-day free trial)" if WEBSITE_PURCHASE_ENABLED else "")
 
 
 def _buy_flow_configured():
