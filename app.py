@@ -41,7 +41,7 @@ DISCORD_CLIENT_SECRET   = os.environ.get("DISCORD_CLIENT_SECRET", "")
 LEMON_SQUEEZY_API_KEY   = os.environ.get("LEMON_SQUEEZY_API_KEY", "")
 LEMON_SQUEEZY_STORE_ID  = os.environ.get("LEMON_SQUEEZY_STORE_ID", "")
 DISCORD_OAUTH_REDIRECT_URI = os.environ.get(
-    "DISCORD_OAUTH_REDIRECT_URI", "https://breachreportbot.com/auth/discord/callback"
+    "DISCORD_OAUTH_REDIRECT_URI", "https://www.breachreportbot.com/auth/discord/callback"
 )
 
 # Must match SEAT_BUNDLES["user"]["1"] in BreachReport.py -- keep in sync by hand if
