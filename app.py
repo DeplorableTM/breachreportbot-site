@@ -29,6 +29,21 @@ INVITE_URL = (
     f"&permissions=347136&integration_type=0&scope=bot+applications.commands"
     if DISCORD_CLIENT_ID else "#"
 )
+# Same store-page link _store_page_view() builds in BreachReport.py, just built here
+# independently since this is a separate codebase with no shared import.
+DISCORD_STORE_URL = (
+    f"https://discord.com/application-directory/{DISCORD_CLIENT_ID}/store"
+    if DISCORD_CLIENT_ID else "#"
+)
+
+# TEMPORARY (2026-07-30): the Lemon Squeezy store is still in test mode, pending identity
+# verification -- a real checkout right now wouldn't charge anything, but would still
+# trigger the real webhook and grant a real, fully-functional seat for free. Until
+# verification clears and the live-mode API key is swapped in, the website's own OAuth+
+# Lemon-Squeezy purchase flow (built below, left fully intact) is disabled and the buy
+# button/route point at the Discord Store instead (a real, live SKU). Flip this back to
+# True once Lemon Squeezy goes live -- no other code changes needed.
+WEBSITE_PURCHASE_ENABLED = False
 
 # ── Website purchase flow (user-scope only for now -- see BreachReport.py's
 # SEAT_BUNDLES for the guild-scope bundles, not wired here yet) ────────────────
@@ -61,7 +76,9 @@ PAGES = {"terms", "privacy", "refunds"}
 def index():
     return render_template(
         "index.html", invite_url=INVITE_URL,
-        buy_enabled=_buy_flow_configured(), user_1_price=USER_1_PRICE_LABEL,
+        buy_enabled=_buy_flow_configured(),
+        buy_href=("/buy" if WEBSITE_PURCHASE_ENABLED else DISCORD_STORE_URL),
+        user_1_price=USER_1_PRICE_LABEL,
     )
 
 
@@ -71,6 +88,10 @@ def buy():
     bundle is wired up right now -- guild-scope purchases need a server picker (the
     identify scope alone doesn't reveal guild memberships) and are deferred until
     there's real demand for buying that way instead of via /subscribe in Discord."""
+    if not WEBSITE_PURCHASE_ENABLED:
+        # Closes the exploit for anyone navigating straight to /buy, not just the
+        # homepage button -- see WEBSITE_PURCHASE_ENABLED's own comment above.
+        return redirect(DISCORD_STORE_URL)
     if not _buy_flow_configured():
         return render_template("buy_error.html", reason="Purchases aren't set up yet — check back soon."), 503
     state = secrets.token_urlsafe(32)

@@ -59,7 +59,7 @@
         <p class="seat-count">1 seat, any server</p>
         {% if buy_enabled %}
         <p class="price">{{ user_1_price }}</p>
-        <a class="btn btn-primary" href="/buy">Get Started</a>
+        <a class="btn btn-primary" href="{{ buy_href }}">Get Started</a>
         {% else %}
         <p class="price">{{ user_1_price }}</p>
         <p class="price-note">Purchases open soon</p>
