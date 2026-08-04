@@ -7,19 +7,19 @@
 {% set page_description %}{% block description %}Breach Report is a free Discord bot that tracks Rainbow Six Siege stats — Ranked, Quick Match, and Unranked — and posts live leaderboards, personal records, and session recaps straight into your server, automatically after every match.{% endblock %}{% endset %}
 <title>{{ page_title }}</title>
 <meta name="description" content="{{ page_description }}">
-<link rel="canonical" href="{{ request.base_url }}">
+<link rel="canonical" href="{{ site_url }}{{ request.path }}">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Breach Report">
 <meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ page_description }}">
-<meta property="og:url" content="{{ request.base_url }}">
-<meta property="og:image" content="{{ request.url_root }}static/logo.jpg">
+<meta property="og:url" content="{{ site_url }}{{ request.path }}">
+<meta property="og:image" content="{{ site_url }}/static/logo.jpg">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ page_title }}">
 <meta name="twitter:description" content="{{ page_description }}">
-<meta name="twitter:image" content="{{ request.url_root }}static/logo.jpg">
+<meta name="twitter:image" content="{{ site_url }}/static/logo.jpg">
 
 <link rel="stylesheet" href="/static/style.css">
 <link rel="icon" type="image/jpeg" href="/static/logo.jpg">

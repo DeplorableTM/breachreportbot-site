@@ -11,6 +11,21 @@ from release_notes import RELEASE_NOTES
 
 app = Flask(__name__)
 
+# Railway terminates TLS at its edge and forwards plain HTTP internally (see
+# enforce_https() below), so request.url_root/request.base_url report "http://" even
+# though every real visitor is on https. Found 2026-08-04 -- every canonical tag, OG
+# URL, and sitemap.xml entry from the new SEO routes was silently emitting http:// URLs,
+# which actively hurts SEO (mixed-scheme canonicalization signals). Since this site only
+# ever runs on one real domain, hardcoding it sidesteps needing to trust proxy headers
+# (X-Forwarded-Proto) for URL generation entirely -- more predictable than relying on
+# Railway's proxy setup never changing.
+SITE_URL = "https://www.breachreportbot.com"
+
+
+@app.context_processor
+def inject_site_url():
+    return {"site_url": SITE_URL}
+
 
 @app.template_filter("markdown_lite")
 def markdown_lite(text):
@@ -251,7 +266,7 @@ SITE_PAGES = [
 
 @app.route("/robots.txt")
 def robots_txt():
-    body = "User-agent: *\nAllow: /\nDisallow: /buy\nDisallow: /auth/\n\nSitemap: {}sitemap.xml\n".format(request.url_root)
+    body = f"User-agent: *\nAllow: /\nDisallow: /buy\nDisallow: /auth/\n\nSitemap: {SITE_URL}/sitemap.xml\n"
     return Response(body, mimetype="text/plain")
 
 
@@ -259,7 +274,7 @@ def robots_txt():
 def sitemap_xml():
     urls = "\n".join(
         f"  <url>\n"
-        f"    <loc>{request.url_root.rstrip('/')}{path}</loc>\n"
+        f"    <loc>{SITE_URL}{path}</loc>\n"
         f"    <changefreq>{changefreq}</changefreq>\n"
         f"    <priority>{priority}</priority>\n"
         f"  </url>"
