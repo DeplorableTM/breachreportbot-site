@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Changelog — Breach Report{% endblock %}
+{% block content %}
+<div class="wrap changelog">
+  <h1>Changelog</h1>
+  <p class="updated">What's shipped, newest first. This mirrors the same "what's new" notes posted in Discord.</p>
+
+  {% for version, bullets in release_notes %}
+  <section class="changelog-entry">
+    <span class="version-badge">v{{ version }}</span>
+    <ul class="changelog-list">
+      {% for bullet in bullets %}
+      <li>{{ bullet|markdown_lite }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

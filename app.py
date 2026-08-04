@@ -1,11 +1,27 @@
 import os
+import re
 import secrets
 from urllib.parse import urlencode
 
 import requests
 from flask import Flask, render_template, abort, request, redirect, session
+from markupsafe import Markup, escape
+
+from release_notes import RELEASE_NOTES
 
 app = Flask(__name__)
+
+
+@app.template_filter("markdown_lite")
+def markdown_lite(text):
+    """Render the small subset of Discord-flavored markdown RELEASE_NOTES bullets
+    actually use (**bold**, `code`) as HTML. Escapes the raw text first so this stays
+    safe even though the content is developer-authored, not user input."""
+    text = str(escape(text))
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)  # must run before single-* below
+    text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
+    text = re.sub(r"`(.+?)`", r"<code>\1</code>", text)
+    return Markup(text)
 
 # Required for signing the session cookie that holds the OAuth CSRF state (see /buy
 # and /auth/discord/callback below). Must be set to a fixed value in Railway -- a
@@ -192,6 +208,11 @@ def discord_callback():
 @app.route("/guide")
 def guide():
     return render_template("guide.html", invite_url=INVITE_URL)
+
+
+@app.route("/changelog")
+def changelog():
+    return render_template("changelog.html", release_notes=RELEASE_NOTES)
 
 
 @app.route("/<page>")
