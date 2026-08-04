@@ -73,7 +73,7 @@ def _buy_flow_configured():
     return all([DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, LEMON_SQUEEZY_API_KEY, LEMON_SQUEEZY_STORE_ID])
 
 
-PAGES = {"terms", "privacy", "refunds"}
+PAGES = {"terms", "privacy", "refunds", "about"}
 
 
 @app.route("/")

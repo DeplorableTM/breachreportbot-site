@@ -225,6 +225,22 @@ nav a:hover { color: var(--text); }
   font-size: 0.88em;
   color: var(--text);
 }
+.x-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 92, 57, 0.4);
+  text-underline-offset: 3px;
+}
+.x-link:hover {
+  color: var(--accent-hover);
+  text-decoration-color: var(--accent-hover);
+}
+.x-link svg { flex-shrink: 0; }
+
 .legal .draft-notice {
   background: rgba(255, 92, 57, 0.08);
   border: 1px solid rgba(255, 92, 57, 0.3);
