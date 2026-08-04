@@ -88,10 +88,22 @@ USER_1_VARIANT_ID  = 1954632
 # equivalent, so drop the trial mention from the label while WEBSITE_PURCHASE_ENABLED
 # is False and the button points at Discord instead. Comes back automatically once the
 # flag flips back to True, no separate change needed then.
-USER_1_PRICE_LABEL = "$4.99/month" + (" (7-day free trial)" if WEBSITE_PURCHASE_ENABLED else "")
+# Price changed $4.99 -> $3.99/month 2026-08-03 -- keep in sync by hand with the real
+# Discord SKU price (Developer Portal) and BreachReport.py's own comments about it,
+# there's no shared source of truth between the two repos.
+USER_1_PRICE_LABEL = "$3.99/month" + (" (7-day free trial)" if WEBSITE_PURCHASE_ENABLED else "")
 
 
 def _buy_flow_configured():
+    """Whether the pricing card should show a real "Get Started" button vs. "Purchases
+    open soon". While WEBSITE_PURCHASE_ENABLED is False, purchasing routes to the
+    Discord Store instead of this site's own OAuth+Lemon-Squeezy checkout -- that only
+    needs DISCORD_CLIENT_ID (the same requirement the "Add to Discord" button already
+    has), not the full Lemon Squeezy config, which this bug was checking regardless of
+    which flow was actually active. Found 2026-08-04: purchasing has been open via
+    Discord since v5.63-b200, but the pricing card was still showing "open soon"."""
+    if not WEBSITE_PURCHASE_ENABLED:
+        return bool(DISCORD_CLIENT_ID)
     return all([DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET, LEMON_SQUEEZY_API_KEY, LEMON_SQUEEZY_STORE_ID])
 
 
