@@ -1,4 +1,23 @@
 {% extends "base.html" %}
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Breach Report",
+  "description": "Breach Report tracks Rainbow Six Siege stats — Ranked, Quick Match, and Unranked — and posts live leaderboards, personal records, and session recaps straight into your Discord server.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Discord",
+  "url": "https://www.breachreportbot.com/",
+  "image": "https://www.breachreportbot.com/static/logo.jpg",
+  "offers": {
+    "@type": "Offer",
+    "price": "3.99",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+{% endblock %}
 {% block content %}
 <section class="hero">
   <div class="wrap hero-inner">

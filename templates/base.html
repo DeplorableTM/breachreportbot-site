@@ -3,10 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}Breach Report — Rainbow Six Siege Stat Tracking for Discord{% endblock %}</title>
-<meta name="description" content="Breach Report tracks Rainbow Six Siege stats — Ranked, Quick Match, and Unranked — and posts live leaderboards, records, and session recaps straight into your Discord server.">
+{% set page_title %}{% block title %}Breach Report — Rainbow Six Siege Stat Tracking for Discord{% endblock %}{% endset %}
+{% set page_description %}{% block description %}Breach Report is a free Discord bot that tracks Rainbow Six Siege stats — Ranked, Quick Match, and Unranked — and posts live leaderboards, personal records, and session recaps straight into your server, automatically after every match.{% endblock %}{% endset %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_description }}">
+<link rel="canonical" href="{{ request.base_url }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Breach Report">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ request.base_url }}">
+<meta property="og:image" content="{{ request.url_root }}static/logo.jpg">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:image" content="{{ request.url_root }}static/logo.jpg">
+
 <link rel="stylesheet" href="/static/style.css">
 <link rel="icon" type="image/jpeg" href="/static/logo.jpg">
+{% block extra_head %}{% endblock %}
 </head>
 <body>
 <header class="site-header">

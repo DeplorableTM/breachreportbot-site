@@ -4,7 +4,7 @@ import secrets
 from urllib.parse import urlencode
 
 import requests
-from flask import Flask, render_template, abort, request, redirect, session
+from flask import Flask, render_template, abort, request, redirect, session, Response
 from markupsafe import Markup, escape
 
 from release_notes import RELEASE_NOTES
@@ -232,6 +232,41 @@ def guide():
 @app.route("/changelog")
 def changelog():
     return render_template("changelog.html", release_notes=RELEASE_NOTES)
+
+
+# Every real, indexable page on the site -- kept as one list so robots.txt's Sitemap
+# reference and sitemap.xml itself can't drift apart. (path, changefreq, priority).
+# Deliberately excludes /buy and /auth/discord/callback -- functional redirect routes,
+# not content, nothing there for a search engine to index.
+SITE_PAGES = [
+    ("/",          "weekly",  "1.0"),
+    ("/guide",     "monthly", "0.8"),
+    ("/about",     "monthly", "0.6"),
+    ("/changelog", "weekly",  "0.5"),
+    ("/terms",     "yearly",  "0.2"),
+    ("/privacy",   "yearly",  "0.2"),
+    ("/refunds",   "yearly",  "0.2"),
+]
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    body = "User-agent: *\nAllow: /\nDisallow: /buy\nDisallow: /auth/\n\nSitemap: {}sitemap.xml\n".format(request.url_root)
+    return Response(body, mimetype="text/plain")
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    urls = "\n".join(
+        f"  <url>\n"
+        f"    <loc>{request.url_root.rstrip('/')}{path}</loc>\n"
+        f"    <changefreq>{changefreq}</changefreq>\n"
+        f"    <priority>{priority}</priority>\n"
+        f"  </url>"
+        for path, changefreq, priority in SITE_PAGES
+    )
+    body = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n'
+    return Response(body, mimetype="application/xml")
 
 
 @app.route("/<page>")
