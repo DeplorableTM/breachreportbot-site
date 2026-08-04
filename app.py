@@ -52,6 +52,12 @@ DISCORD_STORE_URL = (
     if DISCORD_CLIENT_ID else "#"
 )
 
+# Invite to the production "BreachReport" guild itself -- lets a visitor who isn't in
+# any server with the bot come play with the existing community instead of needing
+# their own server. Generic/no-expiry invite for now (2026-08-04); swap once the server
+# has real onboarding channels (rules gate, start-here channel, etc.) built out.
+SUPPORT_SERVER_INVITE_URL = "https://discord.gg/2Ms6rmt63Y"
+
 # TEMPORARY (2026-07-30): the Lemon Squeezy store is still in test mode, pending identity
 # verification -- a real checkout right now wouldn't charge anything, but would still
 # trigger the real webhook and grant a real, fully-functional seat for free. Until
@@ -99,6 +105,7 @@ def index():
         buy_enabled=_buy_flow_configured(),
         buy_href=("/buy" if WEBSITE_PURCHASE_ENABLED else DISCORD_STORE_URL),
         user_1_price=USER_1_PRICE_LABEL,
+        support_server_url=SUPPORT_SERVER_INVITE_URL,
     )
 
 
