@@ -17,6 +17,54 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Breach Report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Discord bot that automatically tracks your squad's Rainbow Six Siege stats and posts leaderboards, records, and session recaps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on console?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Breach Report tracks Xbox and PlayStation players in addition to PC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which game modes does it track?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ranked, Quick Match, and Unranked, tracked independently, plus a Combined view that adds them together."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need admin permissions to use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — an admin invites the bot once, then every player links their own account with /addplayer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$3.99/month per linked account. More bundle sizes are coming soon."
+      }
+    }
+  ]
+}
+</script>
 {% endblock %}
 {% block content %}
 <section class="hero">
@@ -38,6 +86,12 @@
 <section class="features" id="features">
   <div class="wrap">
     <h2>Built for squads who keep score</h2>
+    <p class="section-intro">
+      Breach Report is a Rainbow Six Siege stats bot for Discord that tracks Ranked,
+      Quick Match, and Unranked play on PC and console. Every player links their own
+      Ubisoft account, and the bot handles the rest — kills, deaths, wins, headshots,
+      clutches, and more, posted straight to your server as it happens.
+    </p>
     <div class="feature-grid">
       <div class="feature-card">
         <h3>Multi-mode tracking</h3>
@@ -100,6 +154,34 @@
         <h3>Unlimited</h3>
         <p class="seat-count">No seat limit</p>
         <p class="price">TBD</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>What is Breach Report?</h3>
+        <p>A Discord bot that automatically tracks your squad's Rainbow Six Siege stats and posts leaderboards, records, and session recaps.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it work on console?</h3>
+        <p>Yes — Breach Report tracks Xbox and PlayStation players in addition to PC.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which game modes does it track?</h3>
+        <p>Ranked, Quick Match, and Unranked, tracked independently, plus a Combined view that adds them together.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need admin permissions to use it?</h3>
+        <p>No — an admin invites the bot once, then every player links their own account with /addplayer.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much does it cost?</h3>
+        <p>$3.99/month per linked account. More bundle sizes are coming soon.</p>
       </div>
     </div>
   </div>
