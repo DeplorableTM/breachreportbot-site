@@ -264,6 +264,11 @@ SITE_PAGES = [
 ]
 
 
+@app.route("/google893cee698c7d8f97.html")
+def google_site_verification():
+    return Response("google-site-verification: google893cee698c7d8f97.html", mimetype="text/html")
+
+
 @app.route("/robots.txt")
 def robots_txt():
     body = f"User-agent: *\nAllow: /\nDisallow: /buy\nDisallow: /auth/\n\nSitemap: {SITE_URL}/sitemap.xml\n"
